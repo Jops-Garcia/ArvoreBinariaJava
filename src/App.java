@@ -1,5 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        tree<Integer> newTree = new tree<Integer>();
+        newTree.addNode(10);
     }
 }
