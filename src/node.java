@@ -1,18 +1,18 @@
-public class node<TYPE>{
-    private TYPE value;
-    private node<TYPE> left;
-    private node<TYPE> right;
+public class Node<TYPE>{
+    TYPE value;
+     Node<TYPE> left;
+     Node<TYPE> right;
 
-    public node(TYPE value)
+    public Node(TYPE value)
     {
         this.value = value;
     }
     
     //GET
-    public node<TYPE> getLeft(){
+    public Node<TYPE> getLeft(){
         return left;
     }
-    public node<TYPE> getRight(){
+    public Node<TYPE> getRight(){
         return right;
     }
     public TYPE getValue(){
@@ -23,10 +23,10 @@ public class node<TYPE>{
     public void  setValor(TYPE value){
         this.value = value;
     }
-    public void setRight(node<TYPE> right){
+    public void setRight(Node<TYPE> right){
         this.right = right;
     }
-    public void setLeft(node<TYPE> left){
+    public void setLeft(Node<TYPE> left){
         this.left = left;
     }
 

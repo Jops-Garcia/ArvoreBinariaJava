@@ -1,6 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        tree<Integer> newTree = new tree<Integer>();
+        Tree<Integer> newTree = new Tree<Integer>();
         newTree.addNode(10);
     }
 }

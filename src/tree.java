@@ -1,9 +1,9 @@
 //tem q ser um tipo comparavél, n sei como faz pra comparar 
-public class tree<TYPE extends Comparable> {
-    private node<TYPE> root;
+public class Tree<TYPE extends Comparable> {
+    private Node<TYPE> root;
     private int height;
 
-    public tree(){
+    public Tree(){
         this.root=null;
     }
     
@@ -14,8 +14,8 @@ public class tree<TYPE extends Comparable> {
     //method
 
     public void addNode(TYPE value) {
-        node<TYPE> newNode = new node<TYPE>(value);
-        node<TYPE> oldNode = this.root;
+        Node<TYPE> newNode = new Node<TYPE>(value);
+        Node<TYPE> oldNode = this.root;
         int aux=0;
         if (oldNode==null){
             this.root = newNode;
@@ -49,4 +49,24 @@ public class tree<TYPE extends Comparable> {
             this.height=aux;
         }
     }
+
+    public void inOrder(Node current) {
+        if (current != null) {
+          inOrder(current.left);
+          System.out.print(current.value + " ");
+          inOrder(current.right);
+        }
+      }
+
+    //Descobre altura da arvore recursivamente
+    public int height(Node current) {
+        if(current == null || (current.left == null && current.right == null))
+          return 0;
+        else {
+          if (height(current.left) > height(current.right))
+             return ( 1 + height(current.left) );
+          else
+          return ( 1 + height(current.right) );
+        }
+     }
 }
