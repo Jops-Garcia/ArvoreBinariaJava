@@ -69,4 +69,23 @@ public class Tree<TYPE extends Comparable> {
           return ( 1 + height(current.right) );
         }
      }
+
+     public Node minElement() {
+        Node current = root;
+        Node previous = null;
+        while (current != null) {
+            previous = current;
+            current = current.left;
+        }
+        return previous;
+      }
+    
+      public Node maxElement() {
+        Node current = root;
+        Node previous = null;
+        while (current != null) {
+            previous = current;
+            current = current.right;
+        }
+        return previous;
 }
