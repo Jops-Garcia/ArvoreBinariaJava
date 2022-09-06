@@ -53,7 +53,7 @@ public class Tree<TYPE extends Comparable> {
     public void inOrder(Node<TYPE> current) {
         if (current != null) {
           inOrder(current.left);
-          System.out.print(current.value + " ");
+          System.out.print(current.value+ ", ");
           inOrder(current.right);
         }
       }
@@ -70,9 +70,9 @@ public class Tree<TYPE extends Comparable> {
         }
      }
 
-     public Node minElement() {
-        Node current = root;
-        Node previous = null;
+     public Node<TYPE> minElement() {
+        Node<TYPE> current = root;
+        Node<TYPE> previous = null;
         while (current != null) {
             previous = current;
             current = current.left;
@@ -80,9 +80,9 @@ public class Tree<TYPE extends Comparable> {
         return previous;
       }
     
-      public Node maxElement() {
-        Node current = root;
-        Node previous = null;
+      public Node<TYPE> maxElement() {
+        Node<TYPE> current = root;
+        Node<TYPE> previous = null;
         while (current != null) {
             previous = current;
             current = current.right;
