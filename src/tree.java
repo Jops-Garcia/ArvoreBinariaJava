@@ -14,7 +14,7 @@ public class Tree<TYPE extends Comparable> {
     //method
 
     public void addNode(TYPE value) {
-        Node<TYPE> newNode = new Node<TYPE>(value);
+         Node<TYPE> newNode = new Node<TYPE>(value);
         Node<TYPE> oldNode = this.root;
         int aux=0;
         if (oldNode==null){
@@ -50,7 +50,7 @@ public class Tree<TYPE extends Comparable> {
         }
     }
 
-    public void inOrder(Node current) {
+    public void inOrder(Node<TYPE> current) {
         if (current != null) {
           inOrder(current.left);
           System.out.print(current.value + " ");
@@ -59,7 +59,7 @@ public class Tree<TYPE extends Comparable> {
       }
 
     //Descobre altura da arvore recursivamente
-    public int height(Node current) {
+    public int height(Node<TYPE> current) {
         if(current == null || (current.left == null && current.right == null))
           return 0;
         else {
