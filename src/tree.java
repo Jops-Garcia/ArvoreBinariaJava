@@ -89,3 +89,4 @@ public class Tree<TYPE extends Comparable> {
         }
         return previous;
 }
+}
