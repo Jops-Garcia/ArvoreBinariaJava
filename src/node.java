@@ -1,8 +1,8 @@
 public class Node<TYPE>{
     //value == Aluno
     TYPE value;
-     Node<TYPE> left;
-     Node<TYPE> right;
+    Node<TYPE> left;
+    Node<TYPE> right;
 
     public Node(TYPE value)
     {

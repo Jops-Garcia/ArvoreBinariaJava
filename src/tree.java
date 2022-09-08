@@ -49,6 +49,64 @@ public class Tree<TYPE extends Comparable> {
             this.height=aux;
         }
     }
+    
+    //METODO REMOVER 
+    // public boolean remove(TYPE value) {
+    //     if (root == null) return false; // se arvore vazia
+    
+    //     Node atual = root;
+    //     Node pai = root;
+    //     boolean filho_esq = true;
+    
+       
+    //     while (atual.item != v) { 
+    //       pai = atual;
+    //       if(v < atual.item ) { 
+    //         atual = atual.esq;
+    //         filho_esq = true; 
+    //       }
+    //       else { 
+    //         atual = atual.dir; 
+    //         filho_esq = false; 
+    //       }
+    //       if (atual == null) return false; 
+    //     } 
+    
+        
+    
+    //     // Se nao possui nenhum filho (é uma folha), elimine-o
+    //     if (atual.esq == null && atual.dir == null) {
+    //       if (atual == root ) root = null; // se raiz
+    //       else if (filho_esq) pai.esq = null; // se for filho a esquerda do pai
+    //            else pai.dir = null; // se for filho a direita do pai
+    //     }
+    
+    //     // Se é pai e nao possui um filho a direita, substitui pela subarvore a direita
+    //     else if (atual.dir == null) {
+    //        if (atual == root) root = atual.esq; // se raiz
+    //        else if (filho_esq) pai.esq = atual.esq; // se for filho a esquerda do pai
+    //             else pai.dir = atual.esq; // se for filho a direita do pai
+    //     }
+        
+    //     // Se é pai e nao possui um filho a esquerda, substitui pela subarvore a esquerda
+    //     else if (atual.esq == null) {
+    //        if (atual == root) root = atual.dir; // se raiz
+    //        else if (filho_esq) pai.esq = atual.dir; // se for filho a esquerda do pai
+    //             else pai.dir = atual.dir; // se for  filho a direita do pai
+    //     }
+    
+        
+    //     else {
+    //       No sucessor = no_sucessor(atual);
+          
+    //       if (atual == root) root = sucessor; 
+    //       else if(filho_esq) pai.esq = sucessor; 
+    //            else pai.dir = sucessor; ai
+    //       sucessor.esq = atual.esq;  
+    //     }
+    
+    //     return true;
+    //   }
 
     public void inOrder(Node<TYPE> current) {
         if (current != null) {
