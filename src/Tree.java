@@ -2,6 +2,8 @@
 public class Tree<TYPE extends Comparable> {
     private Node<TYPE> root;
     private int height;
+    private int size;
+
 
     public Tree(){
         this.root=null;
@@ -11,10 +13,13 @@ public class Tree<TYPE extends Comparable> {
     public int getHeight(){
         return height;
     }
-    //method
+    public int getSize(){
+        return size;
+    }
 
+    //methods
     public void addNode(TYPE value) {
-         Node<TYPE> newNode = new Node<TYPE>(value);
+        Node<TYPE> newNode = new Node<TYPE>(value);
         Node<TYPE> oldNode = this.root;
         int aux=0;
         if (oldNode==null){
@@ -23,7 +28,7 @@ public class Tree<TYPE extends Comparable> {
         boolean added=false;
         while(added!=true){
             //usando metodo doido pra comparar o valor novo com o antigo, pra saber se vai pra esq ou dir
-            // -1= menor, +1 igual maior, 0 igual igual
+            // -1 igual menor, +1 igual maior, 0 igual igual
             if (newNode.getValue().compareTo(oldNode.getValue())==-1){
                 if(oldNode.getLeft()!=null){
                     oldNode=oldNode.getLeft();
@@ -48,8 +53,9 @@ public class Tree<TYPE extends Comparable> {
         if(aux>this.height){
             this.height=aux;
         }
+        this.size++;
     }
-    
+    //lembrar de colocar pra alterar a altura e o tamanho após o de remover 
     //METODO REMOVER 
     // public boolean remove(TYPE value) {
     //     if (root == null) return false; // se arvore vazia
@@ -118,17 +124,20 @@ public class Tree<TYPE extends Comparable> {
 
     //Descobre altura da arvore recursivamente
     public int height(Node<TYPE> current) {
-        if(current == null || (current.left == null && current.right == null))
+        if(current == null || (current.left == null && current.right == null)){
           return 0;
-        else {
-          if (height(current.left) > height(current.right))
-             return ( 1 + height(current.left) );
-          else
-          return ( 1 + height(current.right) );
         }
-     }
+        else {
+          if (height(current.left) > height(current.right)){
+            return ( 1 + height(current.left) );
+          }
+          else{
+            return ( 1 + height(current.right) );
+        }
+        }
+    }
 
-     public Node<TYPE> minElement() {
+    public Node<TYPE> minElement() {
         Node<TYPE> current = root;
         Node<TYPE> previous = null;
         while (current != null) {
@@ -138,7 +147,7 @@ public class Tree<TYPE extends Comparable> {
         return previous;
       }
     
-      public Node<TYPE> maxElement() {
+    public Node<TYPE> maxElement() {
         Node<TYPE> current = root;
         Node<TYPE> previous = null;
         while (current != null) {
@@ -146,5 +155,25 @@ public class Tree<TYPE extends Comparable> {
             current = current.right;
         }
         return previous;
-}
+    }
+    public boolean searchNode(TYPE value) {
+        Node<TYPE> newNode = new Node<TYPE>(value);
+        Node<TYPE> oldNode = this.root;
+        if (oldNode==null){
+            return false;
+        }
+        while(oldNode!=null){
+            // -1 igual menor, +1 igual maior, 0 igual igual
+            if (newNode.getValue().compareTo(oldNode.getValue())==0){
+                return true;
+            }
+            if (newNode.getValue().compareTo(oldNode.getValue())==-1){
+                oldNode=oldNode.getLeft();
+            }
+            else if(newNode.getValue().compareTo(oldNode.getValue())==1){
+                oldNode=oldNode.getRight();
+            }
+        }
+        return false;
+    }
 }
