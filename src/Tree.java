@@ -176,4 +176,46 @@ public class Tree<TYPE extends Comparable> {
         }
         return false;
     }
+    public void removeNode(TYPE value) {
+        Node<TYPE> oldNode = this.root;
+        if (oldNode==null){
+            return;
+        }
+        Node<TYPE> parent = null;
+        Node<TYPE> newNode = new Node<TYPE>(value);
+
+        while(oldNode!=null){
+            // -1 igual menor, +1 igual maior, 0 igual igual
+            if (newNode.getValue().compareTo(oldNode.getValue())==0){
+                //found
+                //remove
+                if(oldNode.getRight()!=null && oldNode.getLeft()!=null){
+
+                }
+                else if(oldNode.getRight()!=null){
+
+                }
+                else if(oldNode.getLeft()!=null){
+                    //parent.setRight
+                }
+                else{
+                    if (oldNode.getValue().compareTo(parent.getValue())==1){
+                        parent.setRight(null);
+                    }
+                    else{
+                        parent.setLeft(null);
+                    }
+                }
+                return;
+            }
+            else if (newNode.getValue().compareTo(oldNode.getValue())==-1){
+                parent = oldNode;
+                oldNode=oldNode.getLeft();
+            }
+            else if(newNode.getValue().compareTo(oldNode.getValue())==1){
+                parent = oldNode;
+                oldNode=oldNode.getRight();
+            }
+        }
+    }
 }
