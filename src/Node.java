@@ -3,12 +3,12 @@ public class Node<TYPE>{
     TYPE value;
     Node<TYPE> left;
     Node<TYPE> right;
-
+ 
     public Node(TYPE value)
     {
         this.value = value;
     }
-    
+   
     //GET
     public Node<TYPE> getLeft(){
         return left;
@@ -19,7 +19,7 @@ public class Node<TYPE>{
     public TYPE getValue(){
         return this.value;
     }
-
+ 
     //SET
     public void  setValor(TYPE value){
         this.value = value;
@@ -30,6 +30,7 @@ public class Node<TYPE>{
     public void setLeft(Node<TYPE> left){
         this.left = left;
     }
-
-    
+ 
+   
 }
+ 
