@@ -17,7 +17,7 @@ public class Tree<TYPE extends Comparable> {
         return size;
     }
 
-    //methods
+    //Função que insere um objeto na árvore
     public void addNode(TYPE value) {
         Node<TYPE> newNode = new Node<TYPE>(value);
         Node<TYPE> oldNode = this.root;
@@ -49,71 +49,15 @@ public class Tree<TYPE extends Comparable> {
             }
             aux++;
         }
-        //atualizar altura da arvore
+        //Atualizar altura da arvore
         if(aux>this.height){
             this.height=aux;
         }
         this.size++;
     }
-    //lembrar de colocar pra alterar a altura e o tamanho após o de remover 
-    //METODO REMOVER 
-    // public boolean remove(TYPE value) {
-    //     if (root == null) return false; // se arvore vazia
+   
     
-    //     Node atual = root;
-    //     Node pai = root;
-    //     boolean filho_esq = true;
-    
-       
-    //     while (atual.item != v) { 
-    //       pai = atual;
-    //       if(v < atual.item ) { 
-    //         atual = atual.esq;
-    //         filho_esq = true; 
-    //       }
-    //       else { 
-    //         atual = atual.dir; 
-    //         filho_esq = false; 
-    //       }
-    //       if (atual == null) return false; 
-    //     } 
-    
-        
-    
-    //     // Se nao possui nenhum filho (é uma folha), elimine-o
-    //     if (atual.esq == null && atual.dir == null) {
-    //       if (atual == root ) root = null; // se raiz
-    //       else if (filho_esq) pai.esq = null; // se for filho a esquerda do pai
-    //            else pai.dir = null; // se for filho a direita do pai
-    //     }
-    
-    //     // Se é pai e nao possui um filho a direita, substitui pela subarvore a direita
-    //     else if (atual.dir == null) {
-    //        if (atual == root) root = atual.esq; // se raiz
-    //        else if (filho_esq) pai.esq = atual.esq; // se for filho a esquerda do pai
-    //             else pai.dir = atual.esq; // se for filho a direita do pai
-    //     }
-        
-    //     // Se é pai e nao possui um filho a esquerda, substitui pela subarvore a esquerda
-    //     else if (atual.esq == null) {
-    //        if (atual == root) root = atual.dir; // se raiz
-    //        else if (filho_esq) pai.esq = atual.dir; // se for filho a esquerda do pai
-    //             else pai.dir = atual.dir; // se for  filho a direita do pai
-    //     }
-    
-        
-    //     else {
-    //       No sucessor = no_sucessor(atual);
-          
-    //       if (atual == root) root = sucessor; 
-    //       else if(filho_esq) pai.esq = sucessor; 
-    //            else pai.dir = sucessor; ai
-    //       sucessor.esq = atual.esq;  
-    //     }
-    
-    //     return true;
-    //   }
-
+    //Função de caminhamento em ordem
     public void inOrder(Node<TYPE> current) {
         if (current != null) {
           inOrder(current.left);
@@ -122,7 +66,7 @@ public class Tree<TYPE extends Comparable> {
         }
       }
 
-    //Descobre altura da arvore recursivamente
+    //Função que obtem a altura da arvore recursivamente
     public int height(Node<TYPE> current) {
         if(current == null || (current.left == null && current.right == null)){
           return 0;
@@ -137,6 +81,7 @@ public class Tree<TYPE extends Comparable> {
         }
     }
 
+    //Função que encontra o menor elemento
     public Node<TYPE> minElement() {
         Node<TYPE> current = root;
         Node<TYPE> previous = null;
@@ -147,6 +92,7 @@ public class Tree<TYPE extends Comparable> {
         return previous;
       }
     
+    //Função que encontra o maior elemento
     public Node<TYPE> maxElement() {
         Node<TYPE> current = root;
         Node<TYPE> previous = null;
@@ -156,6 +102,8 @@ public class Tree<TYPE extends Comparable> {
         }
         return previous;
     }
+
+    //Função que busca por um objeto na árvore
     public boolean searchNode(TYPE value) {
         Node<TYPE> newNode = new Node<TYPE>(value);
         Node<TYPE> oldNode = this.root;
@@ -176,6 +124,7 @@ public class Tree<TYPE extends Comparable> {
         }
         return false;
     }
+    //Função que remove um objeto da árvore
     public void removeNode(TYPE value) {
         Node<TYPE> oldNode = this.root;
         if (oldNode==null){
