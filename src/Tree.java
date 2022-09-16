@@ -1,5 +1,8 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 //tem q ser um tipo comparavél, n sei como faz pra comparar
-public class Tree<TYPE extends Comparable> {
+public class Tree<TYPE extends Comparable<TYPE>> {
     private Node<TYPE> root;
     private int height;
     private int size;
@@ -15,6 +18,9 @@ public class Tree<TYPE extends Comparable> {
     }
     public int getSize(){
         return size;
+    }
+    public Node<TYPE> getRoot(){
+        return root;
     }
  
     //Função que insere um objeto na árvore
@@ -50,7 +56,7 @@ public class Tree<TYPE extends Comparable> {
             }
             aux++;
         }
-        //Atualizar altura da arvore
+        //currentizar altura da arvore
         if(aux>this.height){
             this.height=aux;
         }
@@ -62,7 +68,7 @@ public class Tree<TYPE extends Comparable> {
     public void inOrder(Node<TYPE> current) {
         if (current != null) {
           inOrder(current.left);
-          System.out.print(current.value+ ", ");
+          System.out.println(current.getValue().toString());
           inOrder(current.right);
         }
       }
@@ -166,6 +172,20 @@ public class Tree<TYPE extends Comparable> {
                 parent = oldNode;
                 oldNode=oldNode.getRight();
             }
+        }
+    }
+    public void inLevel() {
+        Node<TYPE> node= this.root;
+        if (node == null){
+            return;
+        }
+        Deque<Node<TYPE>> array = new ArrayDeque<>();
+        array.add(node);
+        while (!array.isEmpty()) {
+            Node<TYPE> current = array.removeFirst();
+            System.out.println( current.getValue().toString());
+            if (current.getLeft() != null) array.add(current.getLeft());
+            if (current.getRight() != null) array.add(current.getRight());
         }
     }
 }
