@@ -1,14 +1,14 @@
-//tem q ser um tipo comparavél, n sei como faz pra comparar 
+//tem q ser um tipo comparavél, n sei como faz pra comparar
 public class Tree<TYPE extends Comparable> {
     private Node<TYPE> root;
     private int height;
     private int size;
-
-
+ 
+ 
     public Tree(){
         this.root=null;
     }
-    
+   
     //GET
     public int getHeight(){
         return height;
@@ -16,7 +16,7 @@ public class Tree<TYPE extends Comparable> {
     public int getSize(){
         return size;
     }
-
+ 
     //Função que insere um objeto na árvore
     public void addNode(TYPE value) {
         Node<TYPE> newNode = new Node<TYPE>(value);
@@ -24,6 +24,7 @@ public class Tree<TYPE extends Comparable> {
         int aux=0;
         if (oldNode==null){
             this.root = newNode;
+            return;
         }
         boolean added=false;
         while(added!=true){
@@ -56,7 +57,7 @@ public class Tree<TYPE extends Comparable> {
         this.size++;
     }
    
-    
+       
     //Função de caminhamento em ordem
     public void inOrder(Node<TYPE> current) {
         if (current != null) {
@@ -65,7 +66,7 @@ public class Tree<TYPE extends Comparable> {
           inOrder(current.right);
         }
       }
-
+ 
     //Função que obtem a altura da arvore recursivamente
     public int height(Node<TYPE> current) {
         if(current == null || (current.left == null && current.right == null)){
@@ -80,7 +81,7 @@ public class Tree<TYPE extends Comparable> {
         }
         }
     }
-
+ 
     //Função que encontra o menor elemento
     public Node<TYPE> minElement() {
         Node<TYPE> current = root;
@@ -91,7 +92,7 @@ public class Tree<TYPE extends Comparable> {
         }
         return previous;
       }
-    
+   
     //Função que encontra o maior elemento
     public Node<TYPE> maxElement() {
         Node<TYPE> current = root;
@@ -132,17 +133,17 @@ public class Tree<TYPE extends Comparable> {
         }
         Node<TYPE> parent = null;
         Node<TYPE> newNode = new Node<TYPE>(value);
-
+ 
         while(oldNode!=null){
             // -1 igual menor, +1 igual maior, 0 igual igual
             if (newNode.getValue().compareTo(oldNode.getValue())==0){
                 //found
                 //remove
                 if(oldNode.getRight()!=null && oldNode.getLeft()!=null){
-
+ 
                 }
                 else if(oldNode.getRight()!=null){
-
+ 
                 }
                 else if(oldNode.getLeft()!=null){
                     //parent.setRight
