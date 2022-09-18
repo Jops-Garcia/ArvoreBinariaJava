@@ -137,39 +137,85 @@ public class Tree<TYPE extends Comparable<TYPE>> {
         if (oldNode==null){
             return;
         }
-        Node<TYPE> parent = null;
-        Node<TYPE> newNode = new Node<TYPE>(value);
+        Node<TYPE> oldParent = null;
+        //Node<TYPE> newNode = new Node<TYPE>(value);
  
         while(oldNode!=null){
             // -1 igual menor, +1 igual maior, 0 igual igual
-            if (newNode.getValue().compareTo(oldNode.getValue())==0){
-                //found
-                //remove
-                if(oldNode.getRight()!=null && oldNode.getLeft()!=null){
- 
+            if (value.compareTo(oldNode.getValue())==0){
+                //achou
+                if (oldNode.getRight() != null){ // se tem filho na direita
+                    Node<TYPE> newNode = oldNode.getRight();
+                    Node<TYPE> newParent = oldNode;
+                    while(newNode.getLeft() != null){
+                        newParent = newNode;
+                        newNode = newNode.getLeft();
+                    }
+                    newNode.setLeft(oldNode.getLeft());
+                    if (oldParent != null){
+                        if (oldNode.getValue().compareTo(oldParent.getValue()) == -1){ //oldNode < oldParent
+                            oldParent.setLeft(newNode);
+                        }else{
+                            oldParent.setRight(newNode);
+                        }
+                    }else{ //se não tem oldParent, então é a root
+                        this.root = newNode;
+                        newParent.setLeft(null);
+                        this.root.setRight(newParent);
+                        this.root.setLeft(oldNode.getLeft());
+                    }
+                    
+                    //removeu o Node da árvore
+                    if (newNode.getValue().compareTo(newParent.getValue()) == -1){ //newNode < newParent
+                        newParent.setLeft(null);
+                    }else{
+                        newParent.setRight(null);
+                    }
+                }     
+                else if(oldNode.getLeft()!=null){ // se tem filho só na esquerda
+                    Node<TYPE> newNode = oldNode.getLeft();
+                    Node<TYPE> newParent = oldNode;
+                    while(newNode.getRight() != null){
+                        newParent = newNode;
+                        newNode = newNode.getRight();
+                    }
+                    if (oldParent != null){
+                        if (oldNode.getValue().compareTo(oldParent.getValue()) == -1){ //oldNode < oldParent
+                            oldParent.setLeft(newNode);
+                        }else{
+                            oldParent.setRight(newNode);
+                        }
+                    }else{ //se for a root
+                        this.root = newNode;
+                    }
+                    
+                    //removeu o Node da árvore
+                    if (newNode.getValue().compareTo(newParent.getValue()) == -1){ //newNode < newParent
+                        newParent.setLeft(null);
+                    }else{
+                        newParent.setRight(null);
+                    }   
                 }
-                else if(oldNode.getRight()!=null){
- 
-                }
-                else if(oldNode.getLeft()!=null){
-                    //parent.setRight
-                }
-                else{
-                    if (oldNode.getValue().compareTo(parent.getValue())==1){
-                        parent.setRight(null);
+                else{ //se nao tem filho
+                    if (oldParent != null){
+                        if (oldNode.getValue().compareTo(oldParent.getValue())==1){
+                            oldParent.setRight(null);
+                        }
+                        else{
+                            oldParent.setLeft(null);
+                        }
                     }
                     else{
-                        parent.setLeft(null);
+                        this.root=null;
                     }
                 }
-                return;
             }
-            else if (newNode.getValue().compareTo(oldNode.getValue())==-1){
-                parent = oldNode;
+            else if (value.compareTo(oldNode.getValue())==-1){//nao achou ent anda pra esq ou dir
+                oldParent = oldNode;
                 oldNode=oldNode.getLeft();
             }
-            else if(newNode.getValue().compareTo(oldNode.getValue())==1){
-                parent = oldNode;
+            else{
+                oldParent = oldNode;
                 oldNode=oldNode.getRight();
             }
         }
