@@ -11,16 +11,18 @@ public class App {
         newTree.addNode(teste3);
         newTree.addNode(teste4);
         //newTree.addNode(teste5);
-
+        System.out.println("qtdElem: "+ newTree.getSize());
+        System.out.println("Altura: "+ newTree.getHeight());
         // newTree.searchNode(teste1);
         // newTree.searchNode(teste2);
         // newTree.searchNode(teste3);
         // newTree.searchNode(teste4);
+        //newTree.deepest(newTree.getRoot());
         newTree.inOrder(newTree.getRoot());
         newTree.inLevel();
-        newTree.removeNode(teste1);
-        System.out.println("removeu \n\n");
-        newTree.inOrder(newTree.getRoot());
-        newTree.inLevel();
+        // newTree.removeNode(teste2);
+        // System.out.println("removeu \n\n");
+        // newTree.inOrder(newTree.getRoot());
+        // newTree.inLevel();
     }
 }

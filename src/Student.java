@@ -25,7 +25,7 @@ public class Student implements Comparable<Student> {
     @Override
     public String toString() {
         String value = String.valueOf(getId());
-        return "Nome: "+ getName() +" Matricula: "+ value;
+        return "Matricula: "+ value;
     }
    
     //get set

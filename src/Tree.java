@@ -30,6 +30,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
         int aux=0;
         if (oldNode==null){
             this.root = newNode;
+            this.size++;
             return;
         }
         boolean added=false;
@@ -61,6 +62,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
             this.height=aux;
         }
         this.size++;
+        newNode.setNivel(aux);
     }
    
        
@@ -72,7 +74,24 @@ public class Tree<TYPE extends Comparable<TYPE>> {
           inOrder(current.right);
         }
       }
- 
+    public boolean deepest(Node<TYPE> current) {
+       boolean aux =false;
+        if (current.getNivel()==this.height)
+        {
+            System.out.println(current.toString());
+            return true;
+        }
+        if (current.getLeft()!=null){
+            aux=this.deepest(current.getLeft());
+        }
+        if(aux==false)
+        {
+            if(current.getRight()!=null){
+                aux=this.deepest(current.getRight());
+            }
+        }
+        return true;
+    }
     //Função que obtem a altura da arvore recursivamente
     public int height(Node<TYPE> current) {
         if(current == null || (current.left == null && current.right == null)){
@@ -208,6 +227,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
                     else{
                         this.root=null;
                     }
+                    return;
                 }
             }
             else if (value.compareTo(oldNode.getValue())==-1){//nao achou ent anda pra esq ou dir
