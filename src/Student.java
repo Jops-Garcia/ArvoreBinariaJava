@@ -1,4 +1,7 @@
-//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
+/**
+ *
+ * @author João Pedro Garcia & Rodrigo Couto Rodrigues
+ */
 public class Student implements Comparable<Student> {
     private String name;
     private long  id;
@@ -26,7 +29,7 @@ public class Student implements Comparable<Student> {
     @Override
     public String toString() {
         String value = String.valueOf(getId());
-        return "Matricula: "+ value;
+        return ""+ value+";"+ this.getName()+";"+ this.getGrade();
     }
    
     //get set

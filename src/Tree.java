@@ -1,4 +1,7 @@
-//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
+/**
+ *
+ * @author João Pedro Garcia & Rodrigo Couto Rodrigues
+ */
 import java.util.ArrayDeque;
 import java.util.Deque;
 //tem q ser um tipo comparavél, n sei como faz pra comparar
@@ -61,6 +64,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
             }
             aux++;
         }
+        //optamos por nao inserir um caso onde há matriculas duplicadas pensando no processamento
         //currentizar altura da arvore
         if(aux>this.height){
             this.height=aux;
@@ -115,31 +119,38 @@ public class Tree<TYPE extends Comparable<TYPE>> {
     }
 
     //Função que busca por um objeto na árvore
-    public boolean searchNode(TYPE value) {
+    public void searchNode(TYPE value) {
         Node<TYPE> newNode = new Node<TYPE>(value);
         Node<TYPE> oldNode = this.root;
+        int aux = 0;
         if (oldNode==null){
-            return false;
+            System.out.println("Elemento não encontrado. Quantidade de elementos percorridos: "+aux);
+            return;
         }
         while(oldNode!=null){
             // -1 igual menor, +1 igual maior, 0 igual igual
             if (newNode.getValue().compareTo(oldNode.getValue())==0){
-                return true;
+                System.out.println("quantidade de elementos percorridos: "+aux+" - "+oldNode.getValue().toString());
+                return;
             }
             if (newNode.getValue().compareTo(oldNode.getValue())==-1){
                 oldNode=oldNode.getLeft();
+                aux++;
             }
             else if(newNode.getValue().compareTo(oldNode.getValue())==1){
                 oldNode=oldNode.getRight();
+                aux++;
             }
         }
-        return false;
+        System.out.println("Elemento não encontrado. Quantidade de elementos percorridos: "+aux);
+        return;
     }
     //Função que remove um objeto da árvore
     //root ta maluco
     public void removeNode(TYPE value) {
         Node<TYPE> oldNode = this.root;
         if (oldNode==null){
+            System.out.println("Aluno não encontrado");
             return;
         }
         Node<TYPE> oldParent = null;
@@ -149,6 +160,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
             // -1 igual menor, +1 igual maior, 0 igual igual
             if (value.compareTo(oldNode.getValue())==0){
                 //achou
+                System.out.println("Aluno encontrado. "+oldNode.getValue().toString());
                 if (oldNode.getRight() != null){ // se tem filho na direita
                     Node<TYPE> newNode = oldNode.getRight();
                     Node<TYPE> newParent = oldNode;
@@ -226,6 +238,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
                 oldNode=oldNode.getRight();
             }
         }
+        System.out.println("Aluno não encontrado");
     }
     public void inLevel() {
         Node<TYPE> node= this.root;
@@ -237,6 +250,20 @@ public class Tree<TYPE extends Comparable<TYPE>> {
         while (!array.isEmpty()) {
             Node<TYPE> current = array.removeFirst();
             System.out.println( current.getValue().toString());
+            if (current.getLeft() != null) array.add(current.getLeft());
+            if (current.getRight() != null) array.add(current.getRight());
+        }
+    }
+    public void writeInLevel(String meudir) {
+        Node<TYPE> node= this.root;
+        if (node == null){
+            return;
+        }
+        Deque<Node<TYPE>> array = new ArrayDeque<>();
+        array.add(node);
+        while (!array.isEmpty()) {
+            Node<TYPE> current = array.removeFirst();
+            Arquivo.Write(meudir+"emNivel.txt", current.getValue().toString());
             if (current.getLeft() != null) array.add(current.getLeft());
             if (current.getRight() != null) array.add(current.getRight());
         }

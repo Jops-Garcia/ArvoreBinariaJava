@@ -1,7 +1,12 @@
-//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
+/**
+ *
+ * @author João Pedro Garcia & Rodrigo Couto Rodrigues
+ */
+//import java.nio.file.Files;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -36,5 +41,16 @@ public static void Read(String Caminho, ArrayList<Student> alunos) {
         System.out.println("Erro: Arquivo não encontrado");
     }
 
+}
+public static boolean Write(String caminho, String texto) {
+    try {
+        FileWriter arq = new FileWriter(caminho,true);
+        arq.write(texto + "\n");
+        arq.close();
+        return true;
+    } catch (IOException e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
 }
 }

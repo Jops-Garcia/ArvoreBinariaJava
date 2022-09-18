@@ -1,4 +1,7 @@
-//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
+/**
+ *
+ * @author João Pedro Garcia & Rodrigo Couto Rodrigues
+ */
 public class Node<TYPE>{
     //value == Aluno
     TYPE value;
