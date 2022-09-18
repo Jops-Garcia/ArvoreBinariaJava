@@ -1,9 +1,10 @@
+//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
 public class Node<TYPE>{
     //value == Aluno
     TYPE value;
     Node<TYPE> left;
     Node<TYPE> right;
-    int nivel;
+
  
 
 
@@ -23,9 +24,7 @@ public class Node<TYPE>{
         return this.value;
     }
     
-    public int getNivel() {
-        return nivel;
-    }
+
 
     //SET
     public void  setValor(TYPE value){
@@ -36,9 +35,6 @@ public class Node<TYPE>{
     }
     public void setLeft(Node<TYPE> left){
         this.left = left;
-    }
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
     }
 
  

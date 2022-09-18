@@ -1,10 +1,11 @@
+//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
 public class Student implements Comparable<Student> {
     private String name;
-    private int id;
+    private long  id;
     private float grade;
  
  
-    public Student(String name, int id, float grade) {
+    public Student(Long id,String name, float grade) {
         this.name = name;
         this.id = id;
         this.grade = grade;
@@ -46,11 +47,11 @@ public class Student implements Comparable<Student> {
         this.grade = grade;
     }
  
-    public int getId() {
+    public long getId() {
         return id;
     }
  
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
  

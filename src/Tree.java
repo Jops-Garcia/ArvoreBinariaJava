@@ -1,6 +1,6 @@
+//AUTORES: João Pedro Garcia Pereira e Rodrigo Couto Rodrigues
 import java.util.ArrayDeque;
 import java.util.Deque;
-
 //tem q ser um tipo comparavél, n sei como faz pra comparar
 public class Tree<TYPE extends Comparable<TYPE>> {
     private Node<TYPE> root;
@@ -21,6 +21,10 @@ public class Tree<TYPE extends Comparable<TYPE>> {
     }
     public Node<TYPE> getRoot(){
         return root;
+    }
+    //SET
+    public void setHeight(int height){
+        this.height=height;
     }
  
     //Função que insere um objeto na árvore
@@ -62,7 +66,6 @@ public class Tree<TYPE extends Comparable<TYPE>> {
             this.height=aux;
         }
         this.size++;
-        newNode.setNivel(aux);
     }
    
        
@@ -74,24 +77,6 @@ public class Tree<TYPE extends Comparable<TYPE>> {
           inOrder(current.right);
         }
       }
-    public boolean deepest(Node<TYPE> current) {
-       boolean aux =false;
-        if (current.getNivel()==this.height)
-        {
-            System.out.println(current.toString());
-            return true;
-        }
-        if (current.getLeft()!=null){
-            aux=this.deepest(current.getLeft());
-        }
-        if(aux==false)
-        {
-            if(current.getRight()!=null){
-                aux=this.deepest(current.getRight());
-            }
-        }
-        return true;
-    }
     //Função que obtem a altura da arvore recursivamente
     public int height(Node<TYPE> current) {
         if(current == null || (current.left == null && current.right == null)){
@@ -151,6 +136,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
         return false;
     }
     //Função que remove um objeto da árvore
+    //root ta maluco
     public void removeNode(TYPE value) {
         Node<TYPE> oldNode = this.root;
         if (oldNode==null){
@@ -227,6 +213,7 @@ public class Tree<TYPE extends Comparable<TYPE>> {
                     else{
                         this.root=null;
                     }
+                    this.size--;
                     return;
                 }
             }

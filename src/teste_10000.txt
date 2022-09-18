@@ -1,4 +1,3 @@
-10000
 36602423259;Amanda Russell;85
 64935751598;Emily Marshall;53
 99179554768;Debra Jones;55

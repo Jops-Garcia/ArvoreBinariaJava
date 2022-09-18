@@ -1,4 +1,3 @@
-100
 11917;Jeffrey Mills;89
 10116;Richard Meza;100
 2304;Andrew Martinez;57
@@ -17,7 +16,7 @@
 10045;Michael Lloyd;96
 1353;Michael Dunn;85
 3069;Michael King;63
-7549;Mrs. Mary Gonzalez;71
+7549;Mary Gonzalez;71
 5500;Jason Park;51
 6972;Timothy Dougherty;71
 2230;Thomas Monroe;59
