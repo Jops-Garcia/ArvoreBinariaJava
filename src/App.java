@@ -12,7 +12,7 @@ public class App {
         meudir = meudir + "\\src\\";
 
         Tree<Student> newTree = new Tree<Student>();
-        String ArqConfig = meudir + "teste_100.txt";
+        String ArqConfig = meudir + "entradaOrdenada200000.txt";
         Arquivo.Read(ArqConfig, alunos);
         for(int i =0;i<alunos.size();i++) {
             Student aluno = alunos.get(i);
@@ -69,7 +69,10 @@ public class App {
             case 2:
                 System.out.println("\nInforme a matrícula do aluno procurado:");
                 matricula=aux.nextLong();
+                long tempoInicial = System. currentTimeMillis();
                 newTree.searchNode(new Student(matricula,"",0));
+                long tempoFinal = System. currentTimeMillis();
+                System.out.println("\nTempo Total de busca do aluno em ms: " + (tempoFinal - tempoInicial));
                 lixo = aux.nextLine();
                 break;
 

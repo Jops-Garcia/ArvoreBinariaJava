@@ -19,7 +19,8 @@ public static void Read(String Caminho, ArrayList<Student> alunos) {
         String linha = "";
 
         try {
-
+            //pula primeira linha
+            linha = lerArq.readLine();
             linha = lerArq.readLine();
 
             while (linha != null) {
@@ -44,6 +45,7 @@ public static void Read(String Caminho, ArrayList<Student> alunos) {
 }
 public static boolean Write(String caminho, String texto) {
     try {
+        //remover da pasta após o uso para testes pois irá append em no mesmo arquivo
         FileWriter arq = new FileWriter(caminho,true);
         arq.write(texto + "\n");
         arq.close();
