@@ -268,4 +268,20 @@ public class Tree<TYPE extends Comparable<TYPE>> {
             if (current.getRight() != null) array.add(current.getRight());
         }
     }
+    public Node<TYPE> worstNode(){
+        Node<TYPE> node= this.root;
+        if (node == null){
+            return node;
+        }
+        Deque<Node<TYPE>> array = new ArrayDeque<>();
+        array.add(node);
+        if (node.getLeft() != null) array.add(node.getLeft());
+        if (node.getRight() != null) array.add(node.getRight());
+        while (array.size()>1) {
+            Node<TYPE> current = array.removeFirst();
+            if (current.getLeft() != null) array.add(current.getLeft());
+            if (current.getRight() != null) array.add(current.getRight());
+        }
+        return array.getFirst();
+    }  
 }

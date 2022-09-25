@@ -12,7 +12,10 @@ public class App {
         meudir = meudir + "\\src\\";
 
         Tree<Student> newTree = new Tree<Student>();
-        String ArqConfig = meudir + "entradaOrdenada200000.txt";
+        // ALTERE O NOME DO ARQUIVO AQUI -> |
+                                        //  V
+        String ArqConfig = meudir + "entradaBalanceada200000.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
+
         Arquivo.Read(ArqConfig, alunos);
         for(int i =0;i<alunos.size();i++) {
             Student aluno = alunos.get(i);
@@ -63,15 +66,15 @@ public class App {
                 //maior elem
                 System.out.println("\nMaior Elemento: "+ (newTree.maxElement().getValue().toString()));
                 //pior caso
-                System.out.println("\npior caso: "+ "(ツ) n sei (ツ)");
+                System.out.println("\npior caso: "+ (newTree.worstNode().getValue().toString()));
                 break;
 
             case 2:
                 System.out.println("\nInforme a matrícula do aluno procurado:");
                 matricula=aux.nextLong();
-                long tempoInicial = System. currentTimeMillis();
+                Long tempoInicial = System. currentTimeMillis();
                 newTree.searchNode(new Student(matricula,"",0));
-                long tempoFinal = System. currentTimeMillis();
+                Long tempoFinal = System. currentTimeMillis();
                 System.out.println("\nTempo Total de busca do aluno em ms: " + (tempoFinal - tempoInicial));
                 lixo = aux.nextLine();
                 break;
