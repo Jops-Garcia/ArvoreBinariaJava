@@ -14,7 +14,7 @@ public class App {
         Tree<Student> newTree = new Tree<Student>();
         // ALTERE O NOME DO ARQUIVO AQUI -> |
                                         //  V
-        String ArqConfig = meudir + "entradaBalanceada200000.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
+        String ArqConfig = meudir + "entradaBalanceada100000.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
 
         Arquivo.Read(ArqConfig, alunos);
         for(int i =0;i<alunos.size();i++) {

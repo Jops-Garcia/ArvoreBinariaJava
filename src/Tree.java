@@ -4,7 +4,7 @@
  */
 import java.util.ArrayDeque;
 import java.util.Deque;
-//tem q ser um tipo comparavél, n sei como faz pra comparar
+
 public class Tree<TYPE extends Comparable<TYPE>> {
     private Node<TYPE> root;
     private int height;
