@@ -1,6 +1,7 @@
-public class TreeAVL<TYPE extends Comparable<TYPE>> extends Tree<TYPE>{
+public class TreeAVL<TYPE extends Comparable> extends Tree<TYPE>{
     private Node<TYPE> root;
-
+    private int height;
+    private int size;
 
     public Node<TYPE> getRoot() {
         return root;
@@ -13,15 +14,66 @@ public class TreeAVL<TYPE extends Comparable<TYPE>> extends Tree<TYPE>{
 
 
 
-    
-    
-    int balancingFactor(Node<TYPE> element){
-        int factor;
-        System.out.println("ESQ" + height(element.getLeft()));
-        System.out.println("DIR" + height(element.getRight()));
-        factor = (height(element.getLeft()) - height(element.getRight()));
-        return factor;
+    @Override
+    public void addNode (TYPE value){
+        Node<TYPE> newNode = new Node<TYPE>(value);
+        Node<TYPE> oldNode = this.root;
+        int aux=0;
+        if (oldNode==null){
+            this.root = newNode;
+            this.size++;
+            return;
+        }
+        boolean added=false;
+        while(added!=true){
+            //usando metodo doido pra comparar o valor novo com o antigo, pra saber se vai pra esq ou dir
+            // -1 igual menor, +1 igual maior, 0 igual igual
+            if (newNode.getValue().compareTo(oldNode.getValue())==-1){
+                if(oldNode.getLeft()!=null){
+                    oldNode=oldNode.getLeft();
+                }
+                else{
+                    oldNode.setLeft(newNode);
+                    added=true;
+                }
+            }
+            else{
+                if(oldNode.getRight()!=null){
+                    oldNode=oldNode.getRight();
+                }
+                else{
+                    oldNode.setRight(newNode);
+                    added=true;
+                }
+            }
+            aux++;
+        }
+        //optamos por nao inserir um caso onde há matriculas duplicadas pensando no processamento
+        //currentizar altura da arvore
+        if(aux>this.height){
+            this.height=aux;
+        }
+        this.size++;
+
+
+        if (this.root.balancingFactor()>1){
+            if(this.root.getRight().balancingFactor()>0){
+                this.root=this.leftRotation(this.root);
+            }
+            else{
+                this.root=this.rotacaoDireitaEsquerda(this.root);
+            }
+        }
+        else if(this.root.balancingFactor()<-1){
+            if(this.root.getLeft().balancingFactor()<0){
+                this.root=this.rightRotation(this.root);
+            }
+            else{
+                this.root=this.rotacaoEsquerdaDireita(this.root);
+            }
+        }
     }
+    
 
     private Node<TYPE> leftRotation(Node<TYPE> r){
         Node<TYPE> f = r.getRight();
@@ -51,21 +103,21 @@ public class TreeAVL<TYPE extends Comparable<TYPE>> extends Tree<TYPE>{
         return rightRotation(r);
     }
 
-    Node<TYPE> balancing(Node<TYPE> r){
-        if(balancingFactor(r) == 2){
-            if(balancingFactor(r.getLeft())>0){
-                r = rightRotation(r);
-            }else{
-                r = rotacaoDireitaEsquerda(r);
-            }
-        }else if(balancingFactor(r) == -2){
-            if(balancingFactor(r.getRight())<0){
-                r = leftRotation(r);
-            } else{
-                r = rotacaoEsquerdaDireita(r);
-            }
-        }
-        return r;
+    // Node<TYPE> balancing(Node<TYPE> r){
+    //     if(balancingFactor(r) == 2){
+    //         if(balancingFactor(r.getLeft())>0){
+    //             r = rightRotation(r);
+    //         }else{
+    //             r = rotacaoDireitaEsquerda(r);
+    //         }
+    //     }else if(balancingFactor(r) == -2){
+    //         if(balancingFactor(r.getRight())<0){
+    //             r = leftRotation(r);
+    //         } else{
+    //             r = rotacaoEsquerdaDireita(r);
+    //         }
+    //     }
+    //     return r;
 
-    }
+    // }
 }

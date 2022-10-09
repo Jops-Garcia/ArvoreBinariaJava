@@ -12,14 +12,16 @@ public class App {
         meudir = meudir + "\\src\\";
 
         Tree<Student> newTree = new Tree<Student>();
+        TreeAVL<Student> avl = new TreeAVL<Student>();
         // ALTERE O NOME DO ARQUIVO AQUI -> |
                                         //  V
-        String ArqConfig = meudir + "entradaBalanceada100000.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
+        String ArqConfig = meudir + "entradaBalanceada10.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
 
         Arquivo.Read(ArqConfig, alunos);
         for(int i =0;i<alunos.size();i++) {
             Student aluno = alunos.get(i);
             newTree.addNode(aluno);
+            avl.addNode(aluno);
         }
     
         Scanner menu = new Scanner (System.in);
@@ -60,6 +62,9 @@ public class App {
                 //Altura
                 newTree.setHeight(newTree.height(newTree.getRoot()));
                 System.out.println("\nAltura: "+ newTree.getHeight());
+                //avl
+                avl.setHeight(avl.height(avl.getRoot()));
+                System.out.println("\nAltura AVL: "+ avl.getHeight());
                 //menor elem
 
                 System.out.println("\nMenor Elemento: "+ (newTree.minElement().getValue().toString()));

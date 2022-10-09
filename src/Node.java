@@ -40,7 +40,24 @@ public class Node<TYPE>{
         this.left = left;
     }
 
- 
+    public int getSideHeight(Node<TYPE> r){
+        if (r==null){
+            return -1;
+        }
+        else{
+            int hd = getSideHeight(r.getRight());
+            int he = getSideHeight(r.getLeft());
+            if(hd>he){
+                return hd+1;
+            }
+            else{
+                return he+1;
+            }
+        }
+    }
+    public int balancingFactor(){
+        return getSideHeight(this.right) - getSideHeight(this.left);
+    }
    
 }
  

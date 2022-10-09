@@ -5,7 +5,7 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Tree<TYPE extends Comparable<TYPE>> {
+public class Tree<TYPE extends Comparable> {
     private Node<TYPE> root;
     private int height;
     private int size;
