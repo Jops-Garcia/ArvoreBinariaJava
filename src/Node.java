@@ -40,7 +40,10 @@ public class Node<TYPE>{
         this.left = left;
     }
 
-    public int getSideHeight(Node<TYPE> r){
+    public int getSideHeight(){
+        return getSideHeight(this);
+    }
+    private int getSideHeight(Node<TYPE> r){
         if (r==null){
             return -1;
         }
