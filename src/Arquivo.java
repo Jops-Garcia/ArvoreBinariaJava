@@ -36,7 +36,7 @@ public static void Read(String Caminho, ArrayList<Student> alunos) {
             arq.close();
 
         } catch (IOException ex) {
-            System.out.println("Erro: Não leu o arquivo");
+            System.out.println("Erro: Não leu o arquivo"); //adicionando comentario
         }
     } catch (FileNotFoundException ex) {
         System.out.println("Erro: Arquivo não encontrado");
