@@ -15,7 +15,7 @@ public class App {
         TreeAVL<Student> avl = new TreeAVL<Student>();
         // ALTERE O NOME DO ARQUIVO AQUI -> |
                                         //  V
-        String ArqConfig = meudir + "entradaBalanceada100.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
+        String ArqConfig = meudir + "entradaBalanceada10.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
 
         Arquivo.Read(ArqConfig, alunos);
         for(int i =0;i<alunos.size();i++) {
@@ -104,11 +104,11 @@ public class App {
                 break;
 
             case 5:
-                System.out.print("\nAté logo\n");
-                newTree.inOrder(newTree.getRoot());
+                System.out.print("\nAté logo\n\n");
+                 newTree.inOrder(newTree.getRoot());
                 newTree.writeInLevel(meudir);
-                System.out.println("avl: "); //testes apenas
-                avl.inOrder(avl.getRoot());
+                 System.out.println("\navl: "); //testes apenas
+                 avl.inOrder(avl.getRoot());
                 break;
             default:
                 System.out.print("\nOpção Inválida!");

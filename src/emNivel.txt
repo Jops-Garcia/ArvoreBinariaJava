@@ -198,3 +198,13 @@
 2000000096;Forenoda Tude;79.0
 2000000098;Iwakiu Xixua;60.0
 2000000100;Talowuaj Giseto;51.0
+2000000005;Coqo Lai;57.0
+2000000002;Sefukafi Kufabiho;95.0
+2000000008;Nixeig Fewosuqu;51.0
+2000000001;Dizudou Kefina;51.0
+2000000003;Eobo Nunez;13.0
+2000000006;Kelitip Voidud;59.0
+2000000009;Ohovadoj Kib;54.0
+2000000004;Fii Qirolu;67.0
+2000000007;Yiyufi Eiye;33.0
+2000000010;Bofuye Pifia;16.0
