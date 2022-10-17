@@ -15,7 +15,7 @@ public class TreeAVL<TYPE extends Comparable> extends Tree<TYPE>{
 
 
     @Override
-    public void addNode (TYPE value){
+    public void addNode (TYPE value,Node<TYPE> raiz){
         Node<TYPE> newNode = new Node<TYPE>(value);
         if(this.root != null){
             this.root=addRecursao(this.root,newNode);

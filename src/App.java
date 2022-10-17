@@ -15,13 +15,13 @@ public class App {
         TreeAVL<Student> avl = new TreeAVL<Student>();
         // ALTERE O NOME DO ARQUIVO AQUI -> |
                                         //  V
-        String ArqConfig = meudir + "entradaBalanceada10.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
+        String ArqConfig = meudir + "entradaAleatoria19.txt"; //deixe o txt dentro da pasta src ou altere a variavel "meudir"
 
         Arquivo.Read(ArqConfig, alunos);
         for(int i =0;i<alunos.size();i++) {
             Student aluno = alunos.get(i);
-            newTree.addNode(aluno);
-            avl.addNode(aluno);
+            newTree.addNode(aluno,newTree.getRoot());
+            avl.addNode(aluno,avl.getRoot());
         }
     
         Scanner menu = new Scanner (System.in);
@@ -78,16 +78,21 @@ public class App {
                 System.out.println("\nInforme a matrícula do aluno procurado:");
                 matricula=aux.nextLong();
                 Long tempoInicial = System. currentTimeMillis();
-                newTree.searchNode(new Student(matricula,"",0));
+                newTree.searchNode(new Student(matricula,"",0),newTree.getRoot());
                 Long tempoFinal = System. currentTimeMillis();
                 System.out.println("\nTempo Total de busca do aluno em ms: " + (tempoFinal - tempoInicial));
+                Long tempoInicial1 = System. currentTimeMillis();
+                avl.searchNode(new Student(matricula,"",0),avl.getRoot());
+                Long tempoFinal1 = System. currentTimeMillis();
+                System.out.println("\nTempo Total de busca do aluno em ms(AVL): " + (tempoFinal1 - tempoInicial1));
                 lixo = aux.nextLine();
                 break;
 
             case 3:
                 System.out.println("\nInforme a matrícula do aluno que deseja apagar:");
                 matricula=aux.nextLong();
-                newTree.removeNode(new Student(matricula,"",0));
+                newTree.removeNode(new Student(matricula,"",0),newTree.getRoot());
+                avl.removeNode(new Student(matricula,"",0),avl.getRoot());
                 lixo = aux.nextLine();
                 break;
 
@@ -99,7 +104,8 @@ public class App {
                 nome=aux.next();
                 System.out.println("\nInforme a nota do aluno que deseja inserir:");
                 nota=aux.nextFloat();
-                newTree.addNode(new Student(matricula,nome,nota));
+                newTree.addNode(new Student(matricula,nome,nota),newTree.getRoot());
+                avl.addNode(new Student(matricula,nome,nota),avl.getRoot());
                 lixo = aux.nextLine();
                 break;
 

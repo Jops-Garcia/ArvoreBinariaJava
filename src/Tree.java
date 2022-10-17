@@ -31,9 +31,9 @@ public class Tree<TYPE extends Comparable> {
     }
  
     //Função que insere um objeto na árvore
-    public void addNode(TYPE value) {
+    public void addNode(TYPE value,Node<TYPE> raiz) {
         Node<TYPE> newNode = new Node<TYPE>(value);
-        Node<TYPE> oldNode = this.root;
+        Node<TYPE> oldNode = raiz;
         int aux=0;
         if (oldNode==null){
             this.root = newNode;
@@ -119,12 +119,12 @@ public class Tree<TYPE extends Comparable> {
     }
 
     //Função que busca por um objeto na árvore
-    public void searchNode(TYPE value) {
+    public void searchNode(TYPE value,Node<TYPE> raiz) {
         Node<TYPE> newNode = new Node<TYPE>(value);
-        Node<TYPE> oldNode = this.root;
+        Node<TYPE> oldNode = raiz;
         int aux = 0;
         if (oldNode==null){
-            System.out.println("Elemento não encontrado. Quantidade de elementos percorridos: "+aux);
+            System.out.println("Elemento não encontrado.");
             return;
         }
         while(oldNode!=null){
@@ -142,13 +142,13 @@ public class Tree<TYPE extends Comparable> {
                 aux++;
             }
         }
-        System.out.println("Elemento não encontrado. Quantidade de elementos percorridos: "+aux);
+        System.out.println("Elemento não encontrado.");
         return;
     }
     //Função que remove um objeto da árvore
     //root ta maluco
-    public void removeNode(TYPE value) {
-        Node<TYPE> oldNode = this.root;
+    public void removeNode(TYPE value,Node<TYPE> raiz) {
+        Node<TYPE> oldNode = raiz;
         if (oldNode==null){
             System.out.println("Aluno não encontrado");
             return;
